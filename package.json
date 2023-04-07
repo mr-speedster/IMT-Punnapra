@@ -12,6 +12,20 @@
     "hbs": "~4.0.4",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
-    "nodemon": "^2.0.22"
-  }
+    "netlify-lambda": "^2.0.16",
+    "nodemon": "^2.0.22",
+    "serverless-http": "^3.2.0"
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mr-speedster/IMT-Punnapra.git"
+  },
+  "author": "Ajith D",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mr-speedster/IMT-Punnapra/issues"
+  },
+  "homepage": "https://github.com/mr-speedster/IMT-Punnapra#readme",
+  "description": ""
 }
