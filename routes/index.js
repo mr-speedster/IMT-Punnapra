@@ -6,6 +6,7 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
+
 router.get('/about-us', function(req, res, next) {
   res.render('about-us');
 });
@@ -28,6 +29,10 @@ router.get('/faculty', function(req, res, next) {
 
 router.get('/contact-us', function(req, res, next) {
   res.render('contact-us',);
+});
+
+router.get('/chat-bot', function(req, res, next) {
+  res.render('chat-bot');
 });
 
 module.exports = router;
