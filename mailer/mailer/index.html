@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Upload and Email</title>
+</head>
+<body>
+  <h1>Image Upload and Email</h1>
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="image" accept="image/*"><br><br>
+    <input type="email" name="recipientEmail" placeholder="Recipient's Email"><br><br>
+    <input type="text" name="subject" placeholder="Email Subject"><br><br>
+    <textarea name="message" placeholder="Email Message"></textarea><br><br>
+    <input type="submit" value="Upload and Send">
+  </form>
+</body>
+</html>
