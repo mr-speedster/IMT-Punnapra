@@ -15,6 +15,9 @@ app.post('/upload', upload.single('image'), (req, res) => {
   const recipientEmail = req.body.recipientEmail;
   const subject = req.body.subject;
   const message = req.body.message;
+  const name = req.body.name;
+  const address = req.body.address;
+  const education = req.body.education;
 
   const base64Image = req.file.buffer.toString('base64');
   const imageSrc = `data:${req.file.mimetype};base64,${base64Image}`;
@@ -26,6 +29,10 @@ app.post('/upload', upload.single('image'), (req, res) => {
   doc.image(imageSrc, { width: 400 });
 
   // Add text and other content to the PDF
+  doc.fontSize(16).text('Name: ' + name);
+  doc.fontSize(16).text('Address: ' + address);
+  doc.fontSize(16).text('Education: ' + education);
+
   doc.fontSize(20).text(subject, { align: 'center' });
   doc.fontSize(14).text(message);
 
@@ -73,7 +80,7 @@ app.post('/upload', upload.single('image'), (req, res) => {
   });
 
   // Stream the PDF to a file (optional)
-  doc.pipe(fs.createWriteStream('document.pdf'));
+  //  doc.pipe(fs.createWriteStream('document.pdf'));
   doc.end();
 });
 
