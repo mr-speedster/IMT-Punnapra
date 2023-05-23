@@ -41,32 +41,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-const sendMail = () => {
-  var transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: 'ajithditto@gmail.com',
-        pass: ''
-      }
-  });
-}
-
-var mailOptions = {
-  from: 'Sender Email ID',
-  to: 'Receiver Email Password',
-  subject: 'Sending Email using Node.js',
-  template: 'index',
-  attachments: [
-    { filename: 'abc.jpg', path: path.resolve(__dirname, './image/abc.jpg')}
- ]
-};
-
-app.post('/send-mail', (req, res) => {
-  res.status(200).send({
-    status: "200",
-    message: 'Mail Sent!'
-  })
-  sendMail();
-})
 
 module.exports = app;
