@@ -35,4 +35,8 @@ router.get('/chat-bot', function(req, res, next) {
   res.render('chat-bot');
 });
 
+router.get('/admission-form', function(req, res, next) {
+  res.render('admission-form');
+});
+
 module.exports = router;
