@@ -50,13 +50,32 @@ router.get('/admission-form', function(req, res, next) {
   res.render('admission-form');
 });
 
-router.post('/upload', multer().fields([{ name: 'profileImage', maxCount: 1 }, { name: 'signImage', maxCount: 1 }]), async function(req, res, next) {
+router.post('/send-mail', multer().fields([{ name: 'profileImage', maxCount: 1 }, { name: 'signImage', maxCount: 1 }]), async function(req, res, next) {
+  
   const recipientEmail = req.body.recipientEmail;
-  const subject = req.body.subject;
-  const message = req.body.message;
   const name = req.body.name;
+  const age = req.body.age;
+  const dob = req.body.dob;
+  const religion = req.body.religion;
+  const caste = req.body.caste;
+  const sc_st_oec = req.body.sc_st_oec;
+  const father_name = req.body.father_name;
   const address = req.body.address;
-  const education = req.body.education;
+  const phone_no = req.body.phone_no;
+  const graduation = req.body.graduation;
+  const educational_qualification = req.body.educational_qualification;
+  const sslc_i_name = req.body.sslc_i_name;
+  const sslc_u_name = req.body.sslc_u_name;
+  const sslc_mark = req.body.sslc_mark;
+  const plus_two_i_name = req.body.plus_two_i_name;
+  const plus_two_u_name = req.body.plus_two_u_name;
+  const plus_two_mark = req.body.plus_two_mark;
+  const degree_i_name = req.body.degree_i_name;
+  const degree_u_name = req.body.degree_u_name;
+  const degree_mark = req.body.degree_mark;
+  const kmat_score = req.body.kmat_score;
+  const kmat_date = req.body.kmat_date;
+  const admission_date = req.body.admission_date;
 
   const profileImage = req.files['profileImage'][0];
   const signImage = req.files['signImage'][0];
@@ -71,16 +90,32 @@ router.post('/upload', multer().fields([{ name: 'profileImage', maxCount: 1 }, {
   const doc = new PDFDocument({size:'A4'});
 
   // Write the image to the PDF
+  doc.image('/images/imtpunnapra-logo.png',{width:400,height:50,align:'center'})
   doc.image(imageSrc1, { width: 100,height:100 });
-  doc.image(imageSrc2, { width: 100, height:100 });
-
-  // Add text and other content to the PDF
   doc.fontSize(16).text('Name: ' + name);
+  doc.fontSize(16).text('Age: ' + age);
+  doc.fontSize(16).text('Date of Birth: ' + dob);
+  doc.fontSize(16).text('Religion: ' + religion);
+  doc.fontSize(16).text('Caste: ' + caste);
+  doc.fontSize(16).text('SC/ST/OEC: ' + sc_st_oec);
+  doc.fontSize(16).text('Father\'s Name: ' + father_name);
   doc.fontSize(16).text('Address: ' + address);
-  doc.fontSize(16).text('Education: ' + education);
-
-  doc.fontSize(20).text(subject, { align: 'center' });
-  doc.fontSize(14).text(message);
+  doc.fontSize(16).text('Phone Number: ' + phone_no);
+  doc.fontSize(16).text('Graduation: ' + graduation);
+  doc.fontSize(16).text('Educational Qualification: ' + educational_qualification);
+  doc.fontSize(16).text('SSLC Institution Name: ' + sslc_i_name);
+  doc.fontSize(16).text('SSLC University Name: ' + sslc_u_name);
+  doc.fontSize(16).text('SSLC Mark: ' + sslc_mark);
+  doc.fontSize(16).text('Plus Two Institution Name: ' + plus_two_i_name);
+  doc.fontSize(16).text('Plus Two University Name: ' + plus_two_u_name);
+  doc.fontSize(16).text('Plus Two Mark: ' + plus_two_mark);
+  doc.fontSize(16).text('Degree Institution Name: ' + degree_i_name);
+  doc.fontSize(16).text('Degree University Name: ' + degree_u_name);
+  doc.fontSize(16).text('Degree Mark: ' + degree_mark);
+  doc.fontSize(16).text('KMAT Score: ' + kmat_score);
+  doc.fontSize(16).text('KMAT Date: ' + kmat_date);
+  doc.fontSize(16).text('Admission Date: ' + admission_date);
+  doc.image(imageSrc2, { width: 100, height:100 });
 
   // Generate the PDF buffer
   const pdfBuffer = [];
